@@ -3,7 +3,9 @@ body, html{
 }
 body{
   margin: 0px;
-  background-color:#444;
+  background-image: url('background.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
   font-size: 18px;
 }
 body, a:link, a:visited, a:active{
@@ -17,11 +19,58 @@ body, a:link, a:visited, a:active{
   height:32px;
   background-color: #555;
 }
+.lineup{
+  padding:5px 12px;
+  float:left;
+}
+.bomb{
+  padding:5px 12px;
+  float:left;
+}
 .title{
   background-color: #777;
+  font-weight: bold;
+  color: #cccc00;
 }
-.dancer{
-  border:10px solid red;
+.starfighter{
+  border:10px solid transparent;
   border-radius:10px;
   position:absolute;
+}
+.missile{
+  background: url('bomb.png');
+  background-size: 100%;
+  background-repeat: no-repeat;
+  border: 0;
+  position:absolute;
+  width:  100px;
+  height: 100px;
+}
+
+.ship{
+  background: url('ship.png');
+  background-size: 100%;
+  background-repeat: no-repeat;
+  border: 0;
+  position:absolute;
+  width:  50px;
+  height: 50px;
+}
+
+.over{
+  text-align: center;
+  transform: skew(-12deg) rotate(-12deg);
+  grid-area: text;
+  font-family: 'Sarpanch', sans-serif;
+  font-size: 30vmin;
+  margin: 0;
+  padding: 150px;
+  color: #1d9099;
+  text-shadow: 1vmin 1vmin 0 #E79C10, -1vmin -1vmin 0 #D53A33;
+}
+
+.explode{
+  background-image: url('boo.gif');
+  background-size: cover;
+  background-repeat: no-repeat;
 }

@@ -1,19 +1,24 @@
-var makeBlinkyDancer = function(top, left, timeBetweenSteps) {
-  var blinkyDancer = makeDancer(top, left, timeBetweenSteps);
+var Bug = function(top, left, timeBetweenSteps) {
+  Starfighter.call(this, top, left, timeBetweenSteps)
+  this.$node.addClass('bug')
 
-  // we plan to overwrite the step function below, but we still want the superclass step behavior to work,
-  // so we must keep a copy of the old version of this function
+  var path = ('img/')
+  var imgs = ['bugs1.png', 'bugs2.png', 'bugs3.png', 'bugs4.png']
+  i = Math.floor(Math.random() * imgs.length)
+  k = Math.floor(Math.random() * 4) + 3
 
-  var oldStep = blinkyDancer.step;
+  for (var j = 0; j < k; j++) {
+    this.$node.append("<img src='" + path + imgs[i]+"'width='50px' height='50px'>")
+  }
+}
 
-  blinkyDancer.step = function() {
-    // call the old version of step at the beginning of any call to this new version of step
-    oldStep();
-    // toggle() is a jQuery method to show/hide the <span> tag.
-    // See http://api.jquery.com/category/effects/ for this and
-    // other effects you can use on a jQuery-wrapped html tag.
-    blinkyDancer.$node.toggle();
-  };
+Bug.prototype = Object.create(Starfighter.prototype)
+Bug.prototype.constructor = Bug
 
-  return blinkyDancer;
-};
+Bug.prototype.step = function() {
+  Starfighter.prototype.step.call(this)
+
+  this.$node.animate({
+    left: "+=50"
+  }, 'slow')
+}
